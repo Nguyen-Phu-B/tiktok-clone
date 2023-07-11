@@ -24,7 +24,9 @@
     width: var(--default-layout-witdh, 1150px);
 }
 
-.logo {}
+.logo {
+    display: flex;
+}
 
 .search,
 .search-result {
