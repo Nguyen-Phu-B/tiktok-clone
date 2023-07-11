@@ -7,8 +7,27 @@ import imgages from "~/Assets/Img";
 import styles from "./Header.module.scss";
 import AccountItems from "~/components/AccountItems";
 import Button from "~/components/Button";
+import Menu from "~/components/Popper/Menu";
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <i className="fa-solid fa-earth-asia"></i>,
+        title: "English",
+    },
+    {
+        icon: <i className="fa-solid fa-circle-question"></i>,
+        title: "Feedback and help",
+        to: "/upload",
+    },
+    {
+        icon: <i className="fa-solid fa-keyboard"></i>,
+        title: "Keyboard shortcuts",
+        href: "https://www.tiktok.com/",
+    },
+];
+
 const Header = () => {
     const [searchResult, setSearchResult] = useState([]);
 
@@ -66,6 +85,11 @@ const Header = () => {
                 <div className={cx("actions")}>
                     <Button text>Upload</Button>
                     <Button primary>Login</Button>
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx("more-btn")}>
+                            <i className="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>

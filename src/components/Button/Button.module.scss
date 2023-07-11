@@ -2,11 +2,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
     font-weight: 700;
-    min-width: 100px;
+    // min-width: 100px;
+    width: 100px;
     padding: 9px 16px;
     border-radius: 4px;
+    font-size: 1.6rem;
+    font-family: 'IBM Plex Sans', sans-serif;
     cursor: pointer;
     background-color: var(--white);
     border: 1px solid transparent;
@@ -27,10 +29,16 @@
     margin-left: 8px;
 }
 
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+
 // button type
 .rounded {
     border-radius: 999px;
-    box-shadow: 0 2px 8px Orgb(0 0 0 / 6%);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
     border-color: rgba(22, 24, 35, 0.12);
 
     &:hover {
@@ -45,6 +53,7 @@
     border-color: var(--primary);
 
     &:hover {
+        border-color: var(--primary);
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
     }
 }

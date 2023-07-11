@@ -9,16 +9,17 @@
 
     // defaultLayout
     --default-layout-header-height: 60px;
-    --default-layout-witdh: 1150px
+    --default-layout-witdh: 1150px;
+    --default-layout-horizontal-spacer: 24px;
 }
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-
     font-size: 62.5%;
 }
 
@@ -37,7 +38,7 @@ input,
     border: none;
 }
 
-a[href] {
-    color: var(--text-color);
+a {
+    color: var(--black);
     text-decoration: none;
 }
