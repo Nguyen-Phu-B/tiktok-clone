@@ -1,49 +1,91 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import classNames from "classnames/bind";
 import HeadlessTippy from "@tippyjs/react/headless";
 
-import { Wrapper as PopperWrapper } from "~/components/Popper";
-import AccountItems from "~/components/AccountItems";
+import { Wrapper as PopperWrapper } from "~/Components/Popper";
+import AccountItems from "~/Components/AccountItems";
 import styles from "./Search.module.scss";
+import * as searchServices from "~/ApiServices/searchServices";
+
+import { useDebounce } from "~/Hook";
 
 const cx = classNames.bind(styles);
 
 const Search = () => {
+    const [searchVal, setSearchVal] = useState("");
     const [searchResult, setSearchResult] = useState([]);
+    const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const inputRef = useRef();
+
+    const debounced = useDebounce(searchVal, 500);
+
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 1, 1, 1]);
-        }, 0);
-    }, []);
+        if (!debounced.trim()) {
+            setSearchResult([]);
+            return;
+        }
+
+        const fetchApi = async () => {
+            setLoading(true);
+
+            const result = await searchServices.search(debounced);
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+
+        fetchApi();
+    }, [debounced]);
+
+    const handleClearBtn = () => {
+        setSearchVal("");
+        setSearchResult([]);
+        inputRef.current.focus();
+    };
+
+    const handleHideResult = () => {
+        setShowResult(false);
+    };
+
     return (
         <HeadlessTippy
             interactive
-            visible={searchResult.length > 0}
+            visible={showResult && searchResult.length > 0}
             render={(attrs) => (
                 <div className={cx("search-result")} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx("search-title")}>Accounts</h4>
-                        <AccountItems />
-                        <AccountItems />
-                        <AccountItems />
-                        <AccountItems />
+                        {searchResult.map((result) => (
+                            <AccountItems key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
+            onClickOutside={handleHideResult}
         >
             <div className={cx("search")}>
                 <input
+                    ref={inputRef}
+                    value={searchVal}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
+                    onChange={(e) => setSearchVal(e.target.value)}
+                    onFocus={() => setShowResult(true)}
                 />
 
-                <button className={cx("search-clear")}>
-                    <i className="fa-regular fa-circle-xmark"></i>
-                </button>
+                {!!searchVal && !loading && (
+                    <button className={cx("search-clear")} onClick={handleClearBtn}>
+                        <i className="fa-regular fa-circle-xmark"></i>
+                    </button>
+                )}
 
-                <div className={cx("search-loading")}>
-                    <i className="fa-solid fa-spinner"></i>
-                </div>
+                {loading && (
+                    <div className={cx("search-loading")}>
+                        <i className="fa-solid fa-spinner"></i>
+                    </div>
+                )}
 
                 <button className={cx("search-btn")}>
                     <i className="fa-solid fa-magnifying-glass"></i>

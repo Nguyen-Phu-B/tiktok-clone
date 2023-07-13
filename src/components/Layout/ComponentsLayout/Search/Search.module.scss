@@ -47,6 +47,20 @@
     padding: 5px 12px;
 }
 
+.search-loading {
+    animation: spinner 1.5s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
 .search-clear,
 .search-loading {
     position: absolute;

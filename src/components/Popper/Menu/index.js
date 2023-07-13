@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import Tippy from "@tippyjs/react/headless";
-import { Wrapper as PopperWrapper } from "~/components/Popper";
+import { Wrapper as PopperWrapper } from "~/Components/Popper";
 
 import styles from "./Menu.module.scss";
 import MenuItem from "./MenuItem";
@@ -49,9 +49,7 @@ const Menu = ({ children, items = [], onChange = defFn }) => {
                             <Header
                                 title="Language"
                                 onBack={() => {
-                                    return setHistory((prev) =>
-                                        prev.slice(0, prev.length - 1)
-                                    );
+                                    return setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
                             />
                         )}

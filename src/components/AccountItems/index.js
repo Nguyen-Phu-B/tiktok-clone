@@ -1,27 +1,22 @@
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 import Img from "../Images";
 import styles from "./AccountItems.module.scss";
 
 const cx = classNames.bind(styles);
 
-const AccountItems = () => {
+const AccountItems = ({ data }) => {
     return (
-        <div className={cx("wrapper")}>
-            <Img
-                className={cx("avatar")}
-                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/750989386d547fa72e4c09435452aa44.jpeg?x-expires=1687687200&x-signature=sj6xUNbFiDHdeW5zni1QOSJLAV0%3D"
-                alt="Hoa"
-            />
+        <Link to={`/@${data.nickname}`} className={cx("wrapper")}>
+            <Img className={cx("avatar")} src={data.avatar} alt={data.last_name} />
             <div className={cx("info")}>
                 <h4 className={cx("name")}>
-                    <span>Nguyen Van Hoa</span>
-                    <i
-                        className={"fa-solid fa-circle-check " + cx("check")}
-                    ></i>
+                    <span>{data.full_name}</span>
+                    {data.tick && <i className={"fa-solid fa-circle-check " + cx("check")}></i>}
                 </h4>
-                <span className={cx("username")}>nguyenvanhoa</span>
+                <span className={cx("username")}>{data.nickname}</span>
             </div>
-        </div>
+        </Link>
     );
 };
 

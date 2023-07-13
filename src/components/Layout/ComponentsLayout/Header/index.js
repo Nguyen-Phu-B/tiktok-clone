@@ -4,11 +4,12 @@ import "tippy.js/dist/tippy.css";
 
 import images from "~/Assets/Img";
 import styles from "./Header.module.scss";
-import Button from "~/components/Button";
-import Menu from "~/components/Popper/Menu";
-import Icon from "~/components/Icon";
-import Img from "~/components/Images";
+import Button from "~/Components/Button";
+import Menu from "~/Components/Popper/Menu";
+import Icon from "~/Components/Icon";
+import Img from "~/Components/Images";
 import Search from "../Search";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -84,9 +85,9 @@ const Header = () => {
     return (
         <header className={cx("wrapper")}>
             <div className={cx("inner")}>
-                <div className={cx("logo")}>
+                <Link to="/" className={cx("logo")}>
                     <img src={images.logo} alt="Tiktok"></img>
-                </div>
+                </Link>
 
                 {/* Search */}
                 <Search />
@@ -94,33 +95,17 @@ const Header = () => {
                 <div className={cx("actions")}>
                     {currentUser ? (
                         <>
-                            <Tippy
-                                content="Upload Video"
-                                placement="bottom"
-                                delay={[0, 100]}
-                            >
+                            <Tippy content="Upload Video" placement="bottom" delay={[0, 100]}>
                                 <button className={cx("action-btn")}>
                                     <Icon name={"upload"} />
                                 </button>
                             </Tippy>
-                            <Tippy
-                                content="Message"
-                                placement="bottom"
-                                delay={[0, 100]}
-                            >
+                            <Tippy content="Message" placement="bottom" delay={[0, 100]}>
                                 <button className={cx("action-btn")}>
-                                    <Icon
-                                        name={"mess"}
-                                        width="2.6rem"
-                                        height="2.6rem"
-                                    />
+                                    <Icon name={"mess"} width="2.6rem" height="2.6rem" />
                                 </button>
                             </Tippy>
-                            <Tippy
-                                content="Inbox"
-                                placement="bottom"
-                                delay={[0, 100]}
-                            >
+                            <Tippy content="Inbox" placement="bottom" delay={[0, 100]}>
                                 <button className={cx("action-btn")}>
                                     <Icon name={"inbox"} />
                                 </button>
@@ -132,10 +117,7 @@ const Header = () => {
                             <Button primary>Login</Button>
                         </>
                     )}
-                    <Menu
-                        items={currentUser ? userMenu : MENU_ITEMS}
-                        onChange={handleMenuChange}
-                    >
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Img
                                 className={cx("user-avatar")}
