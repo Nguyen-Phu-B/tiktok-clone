@@ -2,12 +2,13 @@ import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import Img from "../Images";
 import styles from "./AccountItems.module.scss";
+import routesConfig from "~/config/routes";
 
 const cx = classNames.bind(styles);
 
 const AccountItems = ({ data }) => {
     return (
-        <Link to={`/@${data.nickname}`} className={cx("wrapper")}>
+        <Link to={`/${data.nickname}`} className={cx("wrapper")}>
             <Img className={cx("avatar")} src={data.avatar} alt={data.last_name} />
             <div className={cx("info")}>
                 <h4 className={cx("name")}>

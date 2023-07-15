@@ -29,11 +29,16 @@
     padding-bottom: 8px;
 }
 
+.menu-body {
+    overflow-y: auto;
+}
+
 // Header Menu
 .header {
     position: relative;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .back-btn {
@@ -49,4 +54,5 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-weight: 500;
 }

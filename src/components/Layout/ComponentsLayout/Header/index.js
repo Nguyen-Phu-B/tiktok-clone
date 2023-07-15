@@ -10,6 +10,7 @@ import Icon from "~/Components/Icon";
 import Img from "~/Components/Images";
 import Search from "../Search";
 import { Link } from "react-router-dom";
+import routesConfig from "~/config/routes";
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +37,7 @@ const MENU_ITEMS = [
     {
         icon: <i className="fa-solid fa-circle-question"></i>,
         title: "Feedback and help",
-        to: "/upload",
+        to: "",
     },
     {
         icon: <i className="fa-solid fa-keyboard"></i>,
@@ -85,7 +86,7 @@ const Header = () => {
     return (
         <header className={cx("wrapper")}>
             <div className={cx("inner")}>
-                <Link to="/" className={cx("logo")}>
+                <Link to={routesConfig.home} className={cx("logo")}>
                     <img src={images.logo} alt="Tiktok"></img>
                 </Link>
 

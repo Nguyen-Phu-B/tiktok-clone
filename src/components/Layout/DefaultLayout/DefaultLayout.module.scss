@@ -6,8 +6,8 @@
 }
 
 .container {
-    width: var(--default-layout-witdh, 1150px);
     display: flex;
+    width: var(--default-layout-witdh, 1150px);
     margin-top: var(--default-layout-header-height);
     padding: 0 var(--default-layout-horizontal-spacer);
 }
