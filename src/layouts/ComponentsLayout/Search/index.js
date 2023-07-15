@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import classNames from "classnames/bind";
 import HeadlessTippy from "@tippyjs/react/headless";
 
-import { Wrapper as PopperWrapper } from "~/Components/Popper";
-import AccountItems from "~/Components/AccountItems";
+import { Wrapper as PopperWrapper } from "~/components/Popper";
+import AccountItems from "~/components/AccountItems";
 import styles from "./Search.module.scss";
-import * as searchService from "~/Services/searchService";
+import * as searchService from "~/services/searchService";
 
-import { useDebounce } from "~/Hook";
+import { useDebounce } from "~/hook";
 
 const cx = classNames.bind(styles);
 

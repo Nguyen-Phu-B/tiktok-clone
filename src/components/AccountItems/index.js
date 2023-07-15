@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import Img from "../Images";
@@ -18,6 +19,10 @@ const AccountItems = ({ data }) => {
             </div>
         </Link>
     );
+};
+
+AccountItems.propTypes = {
+    data: PropTypes.object.isRequired,
 };
 
 export default AccountItems;
