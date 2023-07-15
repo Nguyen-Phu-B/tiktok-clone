@@ -3,7 +3,7 @@ import Following from "~/Pages/Following";
 import Profile from "~/Pages/Profile";
 import Search from "~/Pages/Search";
 import Upload from "~/Pages/Upload";
-import routesConfig from "~/config/routes";
+import routesConfig from "~/Config/routes";
 
 // Layout
 import { HeaderOnly } from "~/Components/Layout";

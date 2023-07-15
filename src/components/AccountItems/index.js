@@ -2,7 +2,6 @@ import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import Img from "../Images";
 import styles from "./AccountItems.module.scss";
-import routesConfig from "~/config/routes";
 
 const cx = classNames.bind(styles);
 

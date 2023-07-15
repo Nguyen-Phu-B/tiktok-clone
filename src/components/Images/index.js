@@ -5,26 +5,16 @@ import styles from "./Img.module.scss";
 
 const cx = classNames.bind(styles);
 
-const Img = forwardRef(
-    ({ fallback = images.noImg, className, src, ...props }, ref) => {
-        const [fallBack, setFallBack] = useState("");
+const Img = forwardRef(({ fallback = images.noImg, className, src, alt, ...props }, ref) => {
+    const [fallBack, setFallBack] = useState("");
 
-        const classes = cx("wrapper", className);
+    const classes = cx("wrapper", className);
 
-        const handlErr = () => {
-            setFallBack(fallback);
-        };
+    const handlErr = () => {
+        setFallBack(fallback);
+    };
 
-        return (
-            <img
-                className={classes}
-                ref={ref}
-                src={fallBack || src}
-                {...props}
-                onError={handlErr}
-            />
-        );
-    }
-);
+    return <img className={classes} ref={ref} src={fallBack || src} alt={alt} {...props} onError={handlErr} />;
+});
 
 export default Img;

@@ -5,7 +5,7 @@ import HeadlessTippy from "@tippyjs/react/headless";
 import { Wrapper as PopperWrapper } from "~/Components/Popper";
 import AccountItems from "~/Components/AccountItems";
 import styles from "./Search.module.scss";
-import * as searchServices from "~/ApiServices/searchServices";
+import * as searchService from "~/Services/searchService";
 
 import { useDebounce } from "~/Hook";
 
@@ -30,7 +30,7 @@ const Search = () => {
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await searchServices.search(debounced);
+            const result = await searchService.search(debounced);
             setSearchResult(result);
 
             setLoading(false);
